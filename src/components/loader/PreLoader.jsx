@@ -11,6 +11,8 @@ import useMotionPreference from '../../hooks/useMotionPreference';
  * - The official Aura logo is divided into 45 authentic image tiles.
  * - All 45 pieces simultaneously fly in from different sides and angles (top, bottom, left, right, diagonals).
  * - Each piece rotates, scales, and navigates inward to assemble the complete Aura logo at the center.
+ * - No squarely box shadows or white background boxes on the pieces. Only pure transparent logo artwork.
+ * - Flat, clean warm ivory background (#FAF9F4).
  * - Once fully assembled, the logo locks together seamlessly, pauses, and dismisses into the site.
  *
  * @param {boolean} isLoading - External loading state
@@ -72,19 +74,9 @@ export default function PreLoader({
               ease: [0.4, 0, 0.2, 1],
             },
           }}
-          className="fixed inset-0 z-50 flex flex-col items-center justify-center overflow-hidden bg-aura-warm-white select-none px-4"
+          className="fixed inset-0 z-50 flex flex-col items-center justify-center overflow-hidden select-none px-4"
           style={{ backgroundColor: '#FAF9F4' }}
         >
-          {/* Subtle soft radiant ambient aura in background */}
-          <div
-            className="pointer-events-none absolute h-80 w-80 rounded-full bg-aura-leaf-100/30 blur-3xl"
-            aria-hidden="true"
-          />
-          <div
-            className="pointer-events-none absolute h-72 w-72 rounded-full bg-aura-blush-100/30 blur-3xl translate-y-6"
-            aria-hidden="true"
-          />
-
           {/* Logo Assembly Container */}
           <div className="relative z-10 flex flex-col items-center justify-center max-w-full">
             {/* The 45-Piece Assembly Stage */}
@@ -98,13 +90,13 @@ export default function PreLoader({
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: isAssembled ? 1 : 0 }}
-                transition={{ duration: 0.45, ease: 'easeOut' }}
+                transition={{ duration: 0.35, ease: 'easeOut' }}
                 className="absolute inset-0 pointer-events-none"
               >
                 <img
                   src={auraLogoImg}
                   alt="Aura – For Better Life"
-                  className="w-full h-full object-contain filter drop-shadow-subtle"
+                  className="w-full h-full object-contain"
                 />
               </motion.div>
 
@@ -147,10 +139,11 @@ export default function PreLoader({
                       top: cellTop,
                       width: cellWidth,
                       height: cellHeight,
-                      // Subtle tile outline during flight that disappears on assembly
-                      boxShadow: isAssembled
-                        ? 'none'
-                        : '0 4px 12px rgba(47, 92, 64, 0.12)',
+                      backgroundColor: 'transparent',
+                      background: 'transparent',
+                      boxShadow: 'none',
+                      border: 'none',
+                      outline: 'none',
                     }}
                   >
                     {/* The logo image slice mapped to this exact grid coordinate */}
@@ -164,6 +157,8 @@ export default function PreLoader({
                         height: `${LOGO_ROWS * 100}%`,
                         left: `${-piece.col * 100}%`,
                         top: `${-piece.row * 100}%`,
+                        background: 'transparent',
+                        backgroundColor: 'transparent',
                       }}
                     />
                   </motion.div>
@@ -171,20 +166,7 @@ export default function PreLoader({
               })}
             </div>
 
-            {/* Subtitle tag that gently appears once the logo is assembled */}
-            <motion.div
-              initial={{ opacity: 0, y: 6 }}
-              animate={{
-                opacity: isAssembled ? 0.85 : 0,
-                y: isAssembled ? 0 : 6,
-              }}
-              transition={{ duration: 0.5, ease: 'easeOut' }}
-              className="mt-4 text-center"
-            >
-              <span className="text-[10px] sm:text-xs font-semibold tracking-[0.28em] uppercase text-aura-sage-700">
-                RR De-Addiction Center
-              </span>
-            </motion.div>
+
           </div>
 
           {/* Screen reader announcement */}
