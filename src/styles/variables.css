@@ -1,0 +1,90 @@
+:root {
+  /* ==========================================================================
+     AURA BRAND DESIGN TOKENS
+     RR De-Addiction Center: "Aura – For Better Life"
+     ========================================================================== */
+
+  /* Primary Leaf Green (Hope, Renewal, Growth) */
+  --aura-leaf-50: #f2f8f4;
+  --aura-leaf-100: #e2f0e7;
+  --aura-leaf-200: #c3e0ce;
+  --aura-leaf-300: #9bccac;
+  --aura-leaf-400: #6faf85;
+  --aura-leaf-500: #4a8f64;
+  --aura-leaf-600: #3a7450;
+  --aura-leaf-700: #2f5c40;
+  --aura-leaf-800: #274b35;
+  --aura-leaf-900: #1f3c2b;
+
+  /* Gentle Blush Pink (Compassion, Warmth, Healing) */
+  --aura-blush-50: #fcf5f4;
+  --aura-blush-100: #faece9;
+  --aura-blush-200: #f6d9d3;
+  --aura-blush-300: #eec0b7;
+  --aura-blush-400: #e4a094;
+  --aura-blush-500: #d87f71;
+  --aura-blush-600: #c26253;
+  --aura-blush-700: #a14d40;
+  --aura-blush-800: #844237;
+  --aura-blush-900: #6d3930;
+
+  /* Muted Sage / Olive (Calm, Grounding, Balance) */
+  --aura-sage-50: #f6f8f5;
+  --aura-sage-100: #ecf0ea;
+  --aura-sage-200: #dae2d6;
+  --aura-sage-300: #c1cdbd;
+  --aura-sage-400: #a4b49e;
+  --aura-sage-500: #879a81;
+  --aura-sage-600: #6c7e67;
+  --aura-sage-700: #566452;
+  --aura-sage-800: #465143;
+  --aura-sage-900: #3a4337;
+
+  /* Warm White & Light Neutrals (Clarity, Purity, Non-clinical comfort) */
+  --aura-warm-white: #faf9f6;
+  --aura-warm-cream: #f5f3ef;
+  --aura-warm-sand: #ece8df;
+  --aura-warm-stone: #dfdacf;
+
+  /* Charcoal / Deep Slate Text (High contrast without harsh pure black) */
+  --aura-charcoal-primary: #222923;
+  --aura-charcoal-muted: #566359;
+  --aura-charcoal-subtle: #7d8a80;
+
+  /* Typography */
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
+
+  /* Spacing Scale */
+  --space-2xs: 0.25rem; /* 4px */
+  --space-xs: 0.5rem;   /* 8px */
+  --space-sm: 0.75rem;  /* 12px */
+  --space-md: 1rem;     /* 16px */
+  --space-lg: 1.5rem;   /* 24px */
+  --space-xl: 2rem;     /* 32px */
+  --space-2xl: 3rem;    /* 48px */
+  --space-3xl: 4rem;    /* 64px */
+
+  /* Border Radii */
+  --radius-sm: 0.375rem; /* 6px */
+  --radius-md: 0.75rem;  /* 12px */
+  --radius-lg: 1rem;     /* 16px */
+  --radius-xl: 1.5rem;   /* 24px */
+  --radius-full: 9999px;
+
+  /* Animation Timings */
+  --duration-fast: 180ms;
+  --duration-normal: 320ms;
+  --duration-slow: 540ms;
+  --duration-preloader: 1200ms;
+
+  /* Easing curves */
+  --ease-gentle: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Elevation & Shadows */
+  --shadow-subtle: 0 2px 10px -2px rgba(47, 92, 64, 0.05);
+  --shadow-soft: 0 8px 30px -6px rgba(47, 92, 64, 0.08), 0 2px 6px -1px rgba(0, 0, 0, 0.03);
+  --shadow-card: 0 14px 38px -10px rgba(34, 41, 35, 0.07);
+}

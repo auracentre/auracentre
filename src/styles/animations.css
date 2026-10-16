@@ -1,0 +1,89 @@
+/* ==========================================================================
+   AURA ANIMATIONS ARCHITECTURE (CSS Utilities & GPU Transitions)
+   ========================================================================== */
+
+/* Keyframe for subtle leaf breathing / gentle sway */
+@keyframes leafBreathe {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+  }
+  50% {
+    transform: scale(1.025) rotate(1.5deg);
+  }
+}
+
+/* Keyframe for soft radiant aura pulse */
+@keyframes auraPulse {
+  0%, 100% {
+    opacity: 0.35;
+    transform: scale(0.98);
+  }
+  50% {
+    opacity: 0.65;
+    transform: scale(1.03);
+  }
+}
+
+/* Subtle ripple / organic growth wave */
+@keyframes organicGrow {
+  0% {
+    stroke-dashoffset: 100;
+    opacity: 0.2;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
+
+/* Spin animation for lightweight indeterminate indicator */
+@keyframes softSpin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Gentle pulse for badge dots */
+@keyframes calmPulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(0.85);
+  }
+}
+
+.animate-leaf-breathe {
+  animation: leafBreathe 4s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-aura-pulse {
+  animation: auraPulse 3.5s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+.animate-soft-spin {
+  animation: softSpin 1.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.animate-calm-pulse {
+  animation: calmPulse 2s ease-in-out infinite;
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

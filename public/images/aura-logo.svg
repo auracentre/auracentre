@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 120" fill="none" role="img" aria-label="Aura – For Better Life logo">
+  <defs>
+    <linearGradient id="auraLeafGradPub" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3A7450" />
+      <stop offset="60%" stop-color="#4A8F64" />
+      <stop offset="100%" stop-color="#6FAF85" />
+    </linearGradient>
+    <linearGradient id="auraBlushGradPub" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D87F71" />
+      <stop offset="100%" stop-color="#C26253" />
+    </linearGradient>
+    <linearGradient id="auraHaloGradPub" x1="0%" y1="50%" x2="100%" y2="50%">
+      <stop offset="0%" stop-color="#E2F0E7" stop-opacity="0.3" />
+      <stop offset="50%" stop-color="#C3E0CE" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#F6D9D3" stop-opacity="0.4" />
+    </linearGradient>
+  </defs>
+
+  <g transform="translate(15, 10)">
+    <circle cx="50" cy="50" r="46" fill="url(#auraHaloGradPub)" opacity="0.6" />
+    <path
+      d="M 50 10 C 26 10 12 28 12 50 C 12 72 28 88 50 88 C 66 88 80 77 86 64"
+      stroke="#4A8F64"
+      stroke-width="3"
+      stroke-linecap="round"
+      stroke-dasharray="1 1"
+      opacity="0.4"
+    />
+    <path
+      d="M 50 20 C 32 30 24 50 36 68 C 42 76 50 78 54 80 C 58 64 66 42 50 20 Z"
+      fill="url(#auraLeafGradPub)"
+    />
+    <path
+      d="M 50 24 C 44 42 43 58 48 74"
+      stroke="#FAF9F6"
+      stroke-width="2"
+      stroke-linecap="round"
+      opacity="0.8"
+    />
+    <path
+      d="M 52 42 C 65 38 78 48 74 65 C 68 74 58 76 52 76 C 56 64 60 52 52 42 Z"
+      fill="url(#auraBlushGradPub)"
+      opacity="0.92"
+    />
+    <circle cx="56" cy="30" r="3.5" fill="#FAF9F6" />
+    <circle cx="56" cy="30" r="2" fill="#4A8F64" opacity="0.7" />
+  </g>
+
+  <g transform="translate(125, 62)">
+    <text
+      x="0"
+      y="0"
+      font-family="'Playfair Display', Georgia, serif"
+      font-size="46"
+      font-weight="600"
+      letter-spacing="1.5"
+      fill="#D87F71"
+    >Aura</text>
+  </g>
+
+  <g transform="translate(127, 85)">
+    <text
+      x="0"
+      y="0"
+      font-family="'Plus Jakarta Sans', Inter, sans-serif"
+      font-size="12"
+      font-weight="600"
+      letter-spacing="3.8"
+      fill="#3A7450"
+    >FOR BETTER LIFE</text>
+  </g>
+
+  <g transform="translate(127, 102)">
+    <text
+      x="0"
+      y="0"
+      font-family="'Plus Jakarta Sans', Inter, sans-serif"
+      font-size="9.5"
+      font-weight="500"
+      letter-spacing="2.2"
+      fill="#879A81"
+    >RR DE-ADDICTION &amp; REHABILITATION CENTER</text>
+  </g>
+</svg>

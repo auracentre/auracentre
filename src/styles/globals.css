@@ -1,0 +1,74 @@
+@import './variables.css';
+@import './animations.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    background-color: var(--aura-warm-white);
+    color: var(--aura-charcoal-primary);
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+    background-color: var(--aura-warm-white);
+  }
+
+  /* Accessible focus styling */
+  :focus-visible {
+    outline: 2px solid var(--aura-leaf-500);
+    outline-offset: 3px;
+    border-radius: var(--radius-sm);
+  }
+
+  /* Smooth Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--aura-warm-cream);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--aura-sage-300);
+    border-radius: 9999px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--aura-leaf-400);
+  }
+}
+
+@layer utilities {
+  /* Glassmorphism token for calming overlays */
+  .aura-glass {
+    background: rgba(250, 249, 246, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(226, 240, 231, 0.6);
+  }
+
+  .aura-card-border {
+    border: 1px solid rgba(195, 224, 206, 0.35);
+  }
+
+  .aura-gradient-hero {
+    background: radial-gradient(
+      circle at 50% 20%,
+      rgba(226, 240, 231, 0.5) 0%,
+      rgba(252, 245, 244, 0.45) 45%,
+      rgba(250, 249, 246, 1) 85%
+    );
+  }
+}
