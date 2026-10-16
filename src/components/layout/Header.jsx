@@ -1,138 +1,263 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { NavLink, Link } from 'react-router-dom';
-import { Phone, Menu, X, Heart, Shield, Clock } from 'lucide-react';
-import AuraLogo from '../common/AuraLogo';
+import { Menu, X } from 'lucide-react';
+import auraLogoImg from '../../assets/logo/aura-logo-transparent.png';
 
+/**
+ * Header Component — Aura RR De-Addiction Center
+ *
+ * Design Direction:
+ * - Premium, editorial-style centered brand layout.
+ * - Symmetrical 3-column architecture (Left Nav | Center Logo | Right Nav & CTA).
+ * - Warm Ivory (#FAF9F4) backdrop with Forest Green (#43583C) and Botanical Green (#91B978).
+ * - Dynamic scroll compression after 50px of scroll.
+ * - Smooth micro-animations for link hover underlines.
+ * - Responsive mobile view with true logo centering and accessible dropdown.
+ */
 export default function Header() {
+  const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const mobileMenuRef = useRef(null);
+  const menuButtonRef = useRef(null);
 
-  const navLinks = [
+  // Left navigation links
+  const leftNavLinks = [
     { name: 'Home', path: '/' },
     { name: 'About Us', path: '/about' },
-    { name: 'Recovery Programs', path: '/programs' },
+    { name: 'Our Approach', path: '/approach' },
+  ];
+
+  // Right navigation links
+  const rightNavLinks = [
+    { name: 'Programs', path: '/programs' },
     { name: 'Facilities', path: '/facilities' },
     { name: 'Contact', path: '/contact' },
   ];
 
+  const allNavLinks = [...leftNavLinks, ...rightNavLinks];
+
+  // Scroll listener for sticky navbar height and elevation compression
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrolled = window.scrollY > 40;
+      setIsScrolled((prev) => (prev !== scrolled ? scrolled : prev));
+    };
+
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Handle click outside to close mobile dropdown
+  useEffect(() => {
+    if (!mobileMenuOpen) return;
+
+    const handleClickOutside = (event) => {
+      if (
+        mobileMenuRef.current &&
+        !mobileMenuRef.current.contains(event.target) &&
+        menuButtonRef.current &&
+        !menuButtonRef.current.contains(event.target)
+      ) {
+        setMobileMenuOpen(false);
+      }
+    };
+
+    const handleEscapeKey = (event) => {
+      if (event.key === 'Escape') {
+        setMobileMenuOpen(false);
+        menuButtonRef.current?.focus();
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('keydown', handleEscapeKey);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('keydown', handleEscapeKey);
+    };
+  }, [mobileMenuOpen]);
+
   return (
-    <header className="sticky top-0 z-40 w-full aura-glass border-b border-aura-leaf-100 transition-colors">
-      {/* Top Notification / Helpline Bar for Immediate Care */}
-      <div className="bg-aura-leaf-700 text-aura-warm-white text-xs py-1.5 px-4 sm:px-6">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-1 text-center sm:text-left">
-          <div className="flex items-center gap-2 font-medium">
-            <span className="flex h-2 w-2 relative">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-aura-leaf-200 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-aura-leaf-300"></span>
-            </span>
-            <span>24/7 Confidential De-Addiction Support &amp; Medical Intake</span>
-          </div>
-          <div className="flex items-center gap-4 text-aura-warm-sand">
-            <span className="hidden md:inline-flex items-center gap-1">
-              <Shield className="w-3.5 h-3.5" /> 100% Confidential
-            </span>
-            <a
-              href="tel:+918000000000"
-              className="inline-flex items-center gap-1.5 font-semibold text-aura-warm-white hover:text-aura-blush-200 transition-colors focus-visible:ring-1 focus-visible:ring-white"
-            >
-              <Phone className="w-3 h-3 text-aura-blush-300" />
-              <span>Helpline: +91 98765 43210</span>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      {/* Main Navigation Bar */}
+    <header
+      className={`sticky top-0 z-40 w-full transition-all duration-300 ease-in-out select-none ${
+        isScrolled
+          ? 'bg-[#FAF9F4]/95 backdrop-blur-md py-3 shadow-[0_4px_20px_-4px_rgba(67,88,60,0.06)] border-b border-[#91B978]/25'
+          : 'bg-[#FAF9F4] py-5 sm:py-6 border-b border-[#91B978]/15'
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
-          {/* Logo */}
-          <Link
-            to="/"
-            className="flex items-center gap-2 focus-visible:ring-2 focus-visible:ring-aura-leaf-500 rounded-lg p-1 transition-opacity hover:opacity-95"
-            aria-label="Aura - Return to homepage"
+        {/* Desktop Single-Row 3-Column Grid Layout */}
+        <div className="hidden lg:grid grid-cols-[1fr_auto_1fr] items-center w-full">
+          {/* LEFT NAVIGATION */}
+          <nav
+            className="flex items-center justify-start gap-8 xl:gap-10"
+            aria-label="Primary Navigation Left"
           >
-            <AuraLogo variant="full" className="h-10 sm:h-12 w-auto" />
-          </Link>
-
-          {/* Desktop Navigation Links */}
-          <nav className="hidden md:flex items-center gap-1 lg:gap-2" aria-label="Main Navigation">
-            {navLinks.map((link) => (
+            {leftNavLinks.map((item) => (
               <NavLink
-                key={link.name}
-                to={link.path}
+                key={item.name}
+                to={item.path}
                 className={({ isActive }) =>
-                  `px-3.5 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+                  `group relative py-1 text-sm font-medium tracking-wide transition-colors duration-200 outline-none focus-visible:ring-2 focus-visible:ring-[#91B978] focus-visible:ring-offset-2 focus-visible:ring-offset-[#FAF9F4] rounded-sm ${
                     isActive
-                      ? 'bg-aura-leaf-100 text-aura-leaf-800 font-semibold'
-                      : 'text-aura-charcoal-muted hover:text-aura-leaf-700 hover:bg-aura-leaf-50'
+                      ? 'text-[#43583C] font-semibold'
+                      : 'text-[#43583C] hover:text-[#91B978]'
                   }`
                 }
               >
-                {link.name}
+                {({ isActive }) => (
+                  <>
+                    <span>{item.name}</span>
+                    {/* Animated Underline Indicator */}
+                    <span
+                      className={`absolute bottom-0 left-0 h-[2px] w-full bg-[#91B978] rounded-full transition-transform duration-200 ease-out origin-left ${
+                        isActive ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
+                      }`}
+                    />
+                  </>
+                )}
               </NavLink>
             ))}
           </nav>
 
-          {/* Desktop Call to Action Button */}
-          <div className="hidden md:flex items-center gap-3">
-            <a
-              href="#appointment"
-              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full text-sm font-semibold bg-aura-leaf-600 text-white shadow-soft hover:bg-aura-leaf-700 transition-all transform hover:-translate-y-0.5 active:translate-y-0 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-aura-leaf-600"
+          {/* CENTER: Actual Aura Logo (Geometrically Centered) */}
+          <div className="flex items-center justify-center px-6">
+            <Link
+              to="/"
+              className="inline-flex items-center justify-center transition-transform duration-300 ease-in-out hover:opacity-90 active:scale-[0.98] outline-none focus-visible:ring-2 focus-visible:ring-[#91B978] focus-visible:ring-offset-4 focus-visible:ring-offset-[#FAF9F4] rounded-lg"
+              aria-label="Aura – For Better Life Home"
             >
-              <Heart className="w-4 h-4 text-aura-blush-200" />
-              <span>Get Help Today</span>
-            </a>
+              <img
+                src={auraLogoImg}
+                alt="Aura – For Better Life"
+                className={`w-auto object-contain transition-all duration-300 ease-in-out ${
+                  isScrolled ? 'h-9 sm:h-10' : 'h-11 sm:h-12'
+                }`}
+                loading="eager"
+              />
+            </Link>
           </div>
 
-          {/* Mobile Menu Button */}
-          <div className="flex md:hidden items-center">
-            <button
-              type="button"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2.5 rounded-xl text-aura-charcoal-muted hover:text-aura-leaf-700 hover:bg-aura-leaf-100/50 focus-visible:ring-2 focus-visible:ring-aura-leaf-500"
-              aria-expanded={mobileMenuOpen}
-              aria-label="Toggle navigation menu"
+          {/* RIGHT NAVIGATION & GET HELP CTA */}
+          <div className="flex items-center justify-end gap-7 xl:gap-8">
+            <nav
+              className="flex items-center gap-7 xl:gap-8"
+              aria-label="Primary Navigation Right"
             >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
+              {rightNavLinks.map((item) => (
+                <NavLink
+                  key={item.name}
+                  to={item.path}
+                  className={({ isActive }) =>
+                    `group relative py-1 text-sm font-medium tracking-wide transition-colors duration-200 outline-none focus-visible:ring-2 focus-visible:ring-[#91B978] focus-visible:ring-offset-2 focus-visible:ring-offset-[#FAF9F4] rounded-sm ${
+                      isActive
+                        ? 'text-[#43583C] font-semibold'
+                        : 'text-[#43583C] hover:text-[#91B978]'
+                    }`
+                  }
+                >
+                  {({ isActive }) => (
+                    <>
+                      <span>{item.name}</span>
+                      {/* Animated Underline Indicator */}
+                      <span
+                        className={`absolute bottom-0 left-0 h-[2px] w-full bg-[#91B978] rounded-full transition-transform duration-200 ease-out origin-left ${
+                          isActive
+                            ? 'scale-x-100'
+                            : 'scale-x-0 group-hover:scale-x-100'
+                        }`}
+                      />
+                    </>
+                  )}
+                </NavLink>
+              ))}
+            </nav>
+
+            {/* Primary Action Button: Get Help */}
+            <Link
+              to="/contact"
+              className="inline-flex items-center justify-center px-5 py-2 rounded-full text-sm font-semibold tracking-wide text-white bg-[#91B978] hover:bg-[#7EAA64] active:scale-[0.97] transition-all duration-180 shadow-sm focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#91B978] focus-visible:ring-offset-[#FAF9F4]"
+            >
+              Get Help
+            </Link>
           </div>
+        </div>
+
+        {/* Mobile Viewport Header (Logo Centered + Symmetrical Toggle) */}
+        <div className="flex lg:hidden items-center justify-between w-full">
+          {/* Symmetrical Left Spacer to ensure true geometric center for logo */}
+          <div className="w-10 h-10 shrink-0" aria-hidden="true" />
+
+          {/* Center Logo */}
+          <Link
+            to="/"
+            className="flex items-center justify-center transition-transform active:scale-[0.98] outline-none focus-visible:ring-2 focus-visible:ring-[#91B978] rounded-lg"
+            aria-label="Aura – For Better Life Home"
+          >
+            <img
+              src={auraLogoImg}
+              alt="Aura – For Better Life"
+              className={`w-auto object-contain transition-all duration-300 ${
+                isScrolled ? 'h-9' : 'h-10'
+              }`}
+              loading="eager"
+            />
+          </Link>
+
+          {/* Right Mobile Menu Toggle */}
+          <button
+            ref={menuButtonRef}
+            type="button"
+            onClick={() => setMobileMenuOpen((prev) => !prev)}
+            className="w-10 h-10 flex items-center justify-center rounded-full text-[#43583C] hover:text-[#91B978] hover:bg-[#91B978]/10 transition-colors focus-visible:ring-2 focus-visible:ring-[#91B978]"
+            aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-nav-panel"
+            aria-label={mobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+          >
+            {mobileMenuOpen ? (
+              <X className="w-5 h-5 text-[#43583C]" />
+            ) : (
+              <Menu className="w-5 h-5 text-[#43583C]" />
+            )}
+          </button>
         </div>
       </div>
 
-      {/* Mobile Drawer Menu */}
+      {/* Mobile Animated Dropdown Panel */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-t border-aura-leaf-100 bg-aura-warm-white px-4 pt-3 pb-6 shadow-card animate-fadeIn">
-          <nav className="flex flex-col gap-1.5" aria-label="Mobile Navigation">
-            {navLinks.map((link) => (
+        <div
+          ref={mobileMenuRef}
+          id="mobile-nav-panel"
+          className="lg:hidden absolute top-full left-0 w-full bg-[#FAF9F4] border-b border-[#91B978]/25 shadow-lg px-6 pt-4 pb-6 animate-nav-dropdown"
+        >
+          <nav className="flex flex-col gap-2" aria-label="Mobile Navigation">
+            {allNavLinks.map((item) => (
               <NavLink
-                key={link.name}
-                to={link.path}
+                key={item.name}
+                to={item.path}
                 onClick={() => setMobileMenuOpen(false)}
                 className={({ isActive }) =>
-                  `px-4 py-2.5 rounded-xl text-base font-medium transition-colors ${
+                  `px-3.5 py-2.5 rounded-xl text-base font-medium transition-colors ${
                     isActive
-                      ? 'bg-aura-leaf-100 text-aura-leaf-800 font-semibold'
-                      : 'text-aura-charcoal-muted hover:text-aura-leaf-700 hover:bg-aura-leaf-50'
+                      ? 'bg-[#91B978]/15 text-[#43583C] font-semibold'
+                      : 'text-[#43583C] hover:text-[#91B978] hover:bg-[#91B978]/10'
                   }`
                 }
               >
-                {link.name}
+                {item.name}
               </NavLink>
             ))}
-            <div className="pt-3 mt-2 border-t border-aura-leaf-100 flex flex-col gap-2">
-              <a
-                href="#appointment"
+
+            <div className="pt-3 mt-2 border-t border-[#91B978]/20 flex flex-col gap-2.5">
+              <Link
+                to="/contact"
                 onClick={() => setMobileMenuOpen(false)}
-                className="w-full text-center py-3 rounded-xl text-sm font-semibold bg-aura-leaf-600 text-white shadow-soft"
+                className="w-full text-center py-3 rounded-full text-sm font-semibold tracking-wide text-white bg-[#91B978] hover:bg-[#7EAA64] active:scale-[0.98] transition-all shadow-sm"
               >
-                Get Help Today
-              </a>
-              <a
-                href="tel:+918000000000"
-                className="w-full text-center py-2.5 rounded-xl text-sm font-medium text-aura-leaf-700 bg-aura-leaf-50 border border-aura-leaf-200 flex items-center justify-center gap-2"
-              >
-                <Phone className="w-4 h-4 text-aura-blush-500" />
-                <span>Call Helpline</span>
-              </a>
+                Get Help
+              </Link>
             </div>
           </nav>
         </div>

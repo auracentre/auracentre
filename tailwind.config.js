@@ -54,7 +54,18 @@ export default {
             DEFAULT: '#222923',
             light: '#3C453E',
             muted: '#626E65',
-          }
+          },
+          ivory: '#FAF9F4',
+          botanical: {
+            DEFAULT: '#91B978',
+            hover: '#7EAA64',
+            dark: '#6F9856',
+          },
+          forest: {
+            DEFAULT: '#43583C',
+            light: '#536D4B',
+          },
+          softPink: '#E7B8B9',
         },
       },
       fontFamily: {

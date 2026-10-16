@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import MainLayout from '../components/layout/MainLayout';
 import Home from '../pages/Home';
 import About from '../pages/About';
+import Approach from '../pages/Approach';
 import Programs from '../pages/Programs';
 import Facilities from '../pages/Facilities';
 import Contact from '../pages/Contact';
@@ -21,6 +22,7 @@ export default function AppRoutes({ onTriggerLoader }) {
       <Route path="/" element={<MainLayout />}>
         <Route index element={<Home onTriggerLoader={onTriggerLoader} />} />
         <Route path="about" element={<About />} />
+        <Route path="approach" element={<Approach />} />
         <Route path="programs" element={<Programs />} />
         <Route path="facilities" element={<Facilities />} />
         <Route path="contact" element={<Contact />} />
