@@ -6,13 +6,13 @@ import auraLogoImg from '../../assets/logo/aura-logo-transparent.png';
 /**
  * Header Component — Aura RR De-Addiction Center
  *
- * Design Direction:
- * - Premium, editorial-style centered brand layout.
- * - Symmetrical 3-column architecture (Left Nav | Center Logo | Right Nav & CTA).
+ * Space-Optimized Centered-Brand Navigation:
+ * - Full-width distribution: Left navigation spans the left half; Right navigation spans the right half.
+ * - Geometric center: Aura logo is mathematically centered in the middle column.
  * - Warm Ivory (#FAF9F4) backdrop with Forest Green (#43583C) and Botanical Green (#91B978).
- * - Dynamic scroll compression after 50px of scroll.
- * - Smooth micro-animations for link hover underlines.
- * - Responsive mobile view with true logo centering and accessible dropdown.
+ * - Sized logo (h-14 to h-16) with sleek compact navbar height.
+ * - Micro-interactions: Animated underline on hover, visible keyboard focus.
+ * - Fully responsive mobile drawer with true geometric center.
  */
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -83,16 +83,16 @@ export default function Header() {
     <header
       className={`sticky top-0 z-40 w-full transition-all duration-300 ease-in-out select-none ${
         isScrolled
-          ? 'bg-[#FAF9F4]/95 backdrop-blur-md py-3 shadow-[0_4px_20px_-4px_rgba(67,88,60,0.06)] border-b border-[#91B978]/25'
-          : 'bg-[#FAF9F4] py-5 sm:py-6 border-b border-[#91B978]/15'
+          ? 'bg-[#FAF9F4]/95 backdrop-blur-md py-1.5 sm:py-2 shadow-[0_4px_20px_-4px_rgba(67,88,60,0.06)] border-b border-[#91B978]/25'
+          : 'bg-[#FAF9F4] py-2.5 sm:py-3.5 border-b border-[#91B978]/15'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Desktop Single-Row 3-Column Grid Layout */}
+      <div className="w-full px-6 sm:px-10 lg:px-12 xl:px-16 2xl:px-24">
+        {/* Desktop Single-Row 3-Column Layout with Full Space Distribution */}
         <div className="hidden lg:grid grid-cols-[1fr_auto_1fr] items-center w-full">
-          {/* LEFT NAVIGATION */}
+          {/* LEFT HALF: Evenly distributed across the entire left side */}
           <nav
-            className="flex items-center justify-start gap-8 xl:gap-10"
+            className="flex items-center justify-between w-full pr-8 xl:pr-14 2xl:pr-20"
             aria-label="Primary Navigation Left"
           >
             {leftNavLinks.map((item) => (
@@ -100,7 +100,7 @@ export default function Header() {
                 key={item.name}
                 to={item.path}
                 className={({ isActive }) =>
-                  `group relative py-1 text-sm font-medium tracking-wide transition-colors duration-200 outline-none focus-visible:ring-2 focus-visible:ring-[#91B978] focus-visible:ring-offset-2 focus-visible:ring-offset-[#FAF9F4] rounded-sm ${
+                  `group relative py-1 text-sm font-medium tracking-wide transition-colors duration-200 outline-none focus-visible:ring-2 focus-visible:ring-[#91B978] focus-visible:ring-offset-2 focus-visible:ring-offset-[#FAF9F4] rounded-sm whitespace-nowrap ${
                     isActive
                       ? 'text-[#43583C] font-semibold'
                       : 'text-[#43583C] hover:text-[#91B978]'
@@ -122,63 +122,58 @@ export default function Header() {
             ))}
           </nav>
 
-          {/* CENTER: Actual Aura Logo (Geometrically Centered) */}
-          <div className="flex items-center justify-center px-6">
+          {/* CENTER: Actual Aura Logo (Geometrically Centered & Prominent) */}
+          <div className="flex items-center justify-center px-6 xl:px-10 shrink-0">
             <Link
               to="/"
-              className="inline-flex items-center justify-center transition-transform duration-300 ease-in-out hover:opacity-90 active:scale-[0.98] outline-none focus-visible:ring-2 focus-visible:ring-[#91B978] focus-visible:ring-offset-4 focus-visible:ring-offset-[#FAF9F4] rounded-lg"
+              className="inline-flex items-center justify-center transition-transform duration-300 ease-in-out hover:opacity-95 active:scale-[0.98] outline-none focus-visible:ring-2 focus-visible:ring-[#91B978] focus-visible:ring-offset-4 focus-visible:ring-offset-[#FAF9F4] rounded-lg"
               aria-label="Aura – For Better Life Home"
             >
               <img
                 src={auraLogoImg}
                 alt="Aura – For Better Life"
                 className={`w-auto object-contain transition-all duration-300 ease-in-out ${
-                  isScrolled ? 'h-9 sm:h-10' : 'h-11 sm:h-12'
+                  isScrolled ? 'h-10 sm:h-11' : 'h-14 sm:h-16 lg:h-[4.25rem]'
                 }`}
                 loading="eager"
               />
             </Link>
           </div>
 
-          {/* RIGHT NAVIGATION & GET HELP CTA */}
-          <div className="flex items-center justify-end gap-7 xl:gap-8">
-            <nav
-              className="flex items-center gap-7 xl:gap-8"
-              aria-label="Primary Navigation Right"
-            >
-              {rightNavLinks.map((item) => (
-                <NavLink
-                  key={item.name}
-                  to={item.path}
-                  className={({ isActive }) =>
-                    `group relative py-1 text-sm font-medium tracking-wide transition-colors duration-200 outline-none focus-visible:ring-2 focus-visible:ring-[#91B978] focus-visible:ring-offset-2 focus-visible:ring-offset-[#FAF9F4] rounded-sm ${
-                      isActive
-                        ? 'text-[#43583C] font-semibold'
-                        : 'text-[#43583C] hover:text-[#91B978]'
-                    }`
-                  }
-                >
-                  {({ isActive }) => (
-                    <>
-                      <span>{item.name}</span>
-                      {/* Animated Underline Indicator */}
-                      <span
-                        className={`absolute bottom-0 left-0 h-[2px] w-full bg-[#91B978] rounded-full transition-transform duration-200 ease-out origin-left ${
-                          isActive
-                            ? 'scale-x-100'
-                            : 'scale-x-0 group-hover:scale-x-100'
-                        }`}
-                      />
-                    </>
-                  )}
-                </NavLink>
-              ))}
-            </nav>
+          {/* RIGHT HALF: Evenly distributed across the entire right side */}
+          <div className="flex items-center justify-between w-full pl-8 xl:pl-14 2xl:pl-20">
+            {rightNavLinks.map((item) => (
+              <NavLink
+                key={item.name}
+                to={item.path}
+                className={({ isActive }) =>
+                  `group relative py-1 text-sm font-medium tracking-wide transition-colors duration-200 outline-none focus-visible:ring-2 focus-visible:ring-[#91B978] focus-visible:ring-offset-2 focus-visible:ring-offset-[#FAF9F4] rounded-sm whitespace-nowrap ${
+                    isActive
+                      ? 'text-[#43583C] font-semibold'
+                      : 'text-[#43583C] hover:text-[#91B978]'
+                  }`
+                }
+              >
+                {({ isActive }) => (
+                  <>
+                    <span>{item.name}</span>
+                    {/* Animated Underline Indicator */}
+                    <span
+                      className={`absolute bottom-0 left-0 h-[2px] w-full bg-[#91B978] rounded-full transition-transform duration-200 ease-out origin-left ${
+                        isActive
+                          ? 'scale-x-100'
+                          : 'scale-x-0 group-hover:scale-x-100'
+                      }`}
+                    />
+                  </>
+                )}
+              </NavLink>
+            ))}
 
             {/* Primary Action Button: Get Help */}
             <Link
               to="/contact"
-              className="inline-flex items-center justify-center px-5 py-2 rounded-full text-sm font-semibold tracking-wide text-white bg-[#91B978] hover:bg-[#7EAA64] active:scale-[0.97] transition-all duration-180 shadow-sm focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#91B978] focus-visible:ring-offset-[#FAF9F4]"
+              className="inline-flex items-center justify-center px-5 py-2 rounded-full text-sm font-semibold tracking-wide text-white bg-[#91B978] hover:bg-[#7EAA64] active:scale-[0.97] transition-all duration-180 shadow-sm whitespace-nowrap focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#91B978] focus-visible:ring-offset-[#FAF9F4]"
             >
               Get Help
             </Link>
@@ -200,7 +195,7 @@ export default function Header() {
               src={auraLogoImg}
               alt="Aura – For Better Life"
               className={`w-auto object-contain transition-all duration-300 ${
-                isScrolled ? 'h-9' : 'h-10'
+                isScrolled ? 'h-9 sm:h-10' : 'h-11 sm:h-13'
               }`}
               loading="eager"
             />
