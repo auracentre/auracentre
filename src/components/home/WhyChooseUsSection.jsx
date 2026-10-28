@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRight, ShieldCheck, Heart, Sparkles, Sprout, Compass } from 'lucide-react';
 import { useMotionPreference } from '../../hooks/useMotionPreference';
-import sanctuaryGardenImg from '../../assets/images/aura-sanctuary-gardens.jpg';
+import auraLogoImg from '../../assets/logo/aura-logo-transparent.png';
 import mindfulnessAtriumImg from '../../assets/images/aura-mindfulness-conservatory.png';
 import facilityBuildingImg from '../../assets/images/aura-facility-enhanced.jpg';
 
@@ -169,32 +169,30 @@ export default function WhyChooseUsSection() {
             </motion.div>
           </div>
 
-          {/* Right Column: Authentic Sanctuary Photograph */}
+          {/* Right Column: Aura Brand Logo Showcase */}
           <motion.div
             variants={fadeUpVariant}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: '-40px' }}
             custom={0.25}
-            className="lg:col-span-6 xl:col-span-6 w-full"
+            className="lg:col-span-6 xl:col-span-6 w-full flex items-center justify-center"
           >
-            <div className="relative aspect-[4/3] sm:aspect-[16/11] w-full overflow-hidden rounded-[20px] sm:rounded-[24px] border border-[#E8ECE4] shadow-[0_8px_30px_-6px_rgba(38,56,43,0.08)] group bg-white">
+            <div className="relative aspect-[4/3] sm:aspect-[16/11] w-full overflow-hidden rounded-[20px] sm:rounded-[24px] border border-[#E8ECE4] shadow-[0_8px_30px_-6px_rgba(38,56,43,0.08)] bg-white flex items-center justify-center p-8 sm:p-12 lg:p-16 group">
+              {/* Subtle ambient botanical gradient in background */}
+              <div
+                className="absolute inset-0 bg-radial from-[#91B978]/15 via-transparent to-transparent pointer-events-none"
+                aria-hidden="true"
+              />
+
+              {/* Centered Aura Brand Logo */}
               <img
-                src={sanctuaryGardenImg}
-                alt="Aura healing gardens and peaceful recovery courtyard in soft natural morning sunlight"
-                className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                src={auraLogoImg}
+                alt="Aura – For Better Life Logo"
+                className="relative z-10 w-full max-w-[280px] sm:max-w-[340px] md:max-w-[380px] h-auto object-contain transition-transform duration-500 ease-out group-hover:scale-105"
                 loading="lazy"
                 decoding="async"
-                width={900}
-                height={675}
               />
-              {/* Subtle architectural badge */}
-              <div className="absolute bottom-4 left-4 right-4 sm:left-5 sm:right-auto bg-white/95 backdrop-blur-md px-4 py-2.5 rounded-xl border border-[#E8ECE4]/80 shadow-sm flex items-center gap-2.5">
-                <span className="w-2 h-2 rounded-full bg-[#81916F]" aria-hidden="true" />
-                <span className="font-sans text-xs sm:text-[13px] font-medium text-[#26382B]">
-                  Healing Sanctuary Grounds &amp; Courtyard
-                </span>
-              </div>
             </div>
           </motion.div>
         </div>
