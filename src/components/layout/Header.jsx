@@ -27,13 +27,13 @@ export default function Header() {
     { name: 'Home', path: '/' },
     { name: 'About Us', path: '/#about-aura' },
     { name: 'What We Treat', path: '/#what-we-treat' },
-    { name: 'Crew', path: '/doctors' },
+    { name: 'Our Services', path: '/#our-services' },
   ];
 
   // Right navigation links
   const rightNavLinks = [
-    { name: 'Our Services', path: '/#our-services' },
     { name: 'Why Choose Us', path: '/#why-choose-us' },
+    { name: 'Crew', path: '/doctors' },
     { name: 'Gallery', path: '/gallery' },
   ];
 
@@ -179,6 +179,7 @@ export default function Header() {
             {leftNavLinks.map((item) => {
               const isAboutLink = item.path.includes('#about-aura');
               const isTreatLink = item.path.includes('#what-we-treat');
+              const isServicesLink = item.path.includes('#our-services');
               const isHomeLink = item.path === '/';
               const active = isItemActive(item);
 
@@ -202,6 +203,14 @@ export default function Header() {
                         el.scrollIntoView({ behavior: 'smooth' });
                         window.history.pushState(null, '', '/#what-we-treat');
                         setActiveSection('treat');
+                      }
+                    } else if (isServicesLink && window.location.pathname === '/') {
+                      e.preventDefault();
+                      const el = document.getElementById('our-services');
+                      if (el) {
+                        el.scrollIntoView({ behavior: 'smooth' });
+                        window.history.pushState(null, '', '/#our-services');
+                        setActiveSection('services');
                       }
                     } else if (isHomeLink && window.location.pathname === '/') {
                       e.preventDefault();
