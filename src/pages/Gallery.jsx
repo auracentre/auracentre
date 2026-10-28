@@ -6,142 +6,84 @@ import {
   ChevronRight,
 } from 'lucide-react';
 
-// Gallery Image Assets
-import centerArchitectureImg from '../assets/images/aura-center-architecture.jpg';
-import patientSuiteImg from '../assets/images/aura-patient-suite.jpg';
-import yogaHallImg from '../assets/images/aura-yoga-hall.jpg';
-import therapySanctuaryImg from '../assets/images/aura-therapy-sanctuary.jpg';
-import sanctuaryGardensImg from '../assets/images/aura-sanctuary-gardens.jpg';
-import mindfulnessAtriumImg from '../assets/images/aura-mindfulness-atrium.jpg';
-import recoveryEnvironmentImg from '../assets/images/aura-recovery-environment.jpg';
-import topBannerImg from '../assets/images/aura-top-banner.png';
-import heroCenterImg from '../assets/images/aura-hero-center.png';
-import facilityBuildingImg from '../assets/images/aura-facility-enhanced.jpg';
+// Verified Authentic User-Provided Assets
+import dindigulFacilityImg from '../assets/images/aura-dindigul-facility.png';
+import groupTherapyImg from '../assets/images/aura-about-center.png';
+import inpatientWardImg from '../assets/images/aura-mindfulness-conservatory.png';
+import abishekImg from '../assets/images/abishek-director.png';
+import amanullaImg from '../assets/images/amanulla-cofounder.png';
+import gowthamanImg from '../assets/images/gowthaman-medical-officer.png';
 import InfiniteSpiral from '../components/common/InfiniteSpiral';
 
 /**
- * Complete 3D Infinite Spiral Campus Items Data
+ * Authentic Gallery Items Data (Only user-provided images)
  */
 const SPIRAL_ITEMS = [
   {
-    id: 'campus-architecture',
-    src: centerArchitectureImg,
-    image: centerArchitectureImg,
-    alt: 'Exterior architectural photograph of Aura De-Addiction Center surrounded by lush greenery',
-    title: 'Main Clinical Campus & Architecture',
-    categoryLabel: 'Campus & Architecture',
-    location: 'Theni — Main Campus',
+    id: 'aura-facility-dindigul',
+    src: dindigulFacilityImg,
+    image: dindigulFacilityImg,
+    alt: 'Aura De-Addiction & Psychiatric Treatment Centre Dindigul Facility',
+    title: 'Aura De-Addiction Centre Facility',
+    categoryLabel: 'Centre & Campus',
+    location: 'Dindigul — Main Centre',
     description:
-      'Contemporary eco-conscious healthcare architecture surrounded by calming indigenous trees, expansive open courtyards, and natural ventilation designed to promote tranquility.',
-    highlights: ['Natural stone & eco finishes', 'Open courtyards', 'Private perimeter'],
+      'Official residential de-addiction and psychiatric treatment facility in Dindigul, providing safe, confidential inpatient stabilization and round-the-clock medical care.',
   },
   {
-    id: 'dindigul-facility',
-    src: facilityBuildingImg,
-    image: facilityBuildingImg,
-    alt: 'Aura De-Addiction Center Dindigul Facility',
-    title: 'Dindigul Clinical Sanctuary & Campus',
-    categoryLabel: 'Campus & Architecture',
-    location: 'Dindigul — Main Facility',
+    id: 'group-therapy-session',
+    src: groupTherapyImg,
+    image: groupTherapyImg,
+    alt: 'Patients and counselors participating in interactive group therapy session at Aura',
+    title: 'Group Counseling & Recovery Therapy',
+    categoryLabel: 'Therapy & Rehabilitation',
+    location: 'Counseling Hall',
     description:
-      'The modern Dindigul residential clinical facility featuring private counselling suites, structured rehabilitation lounges, and 24/7 psychiatric and medical emergency support.',
-    highlights: ['24/7 Intake & medical post', 'Private consultation rooms', 'Secure rehabilitation campus'],
+      'Structured group therapy and peer reflection sessions where residents share experiences, develop emotional resilience, and support each other through guided recovery modules.',
   },
   {
-    id: 'private-recovery-suite',
-    src: patientSuiteImg,
-    image: patientSuiteImg,
-    alt: 'Spacious private recovery bedroom with floor-to-ceiling garden views and warm wooden accents',
-    title: 'Private Executive Recovery Suite',
-    categoryLabel: 'Suites & Living Quarters',
-    location: 'Theni & Dindigul',
-    description:
-      'Designed to provide unconditional dignity, privacy, and restful rejuvenation. Features floor-to-ceiling views of private landscaped gardens, organic cotton linens, and climate control.',
-    highlights: ['En-suite private bath', 'Garden-facing glass doors', 'Ergonomic furnishings'],
-  },
-  {
-    id: 'yoga-meditation-hall',
-    src: yogaHallImg,
-    image: yogaHallImg,
-    alt: 'Sunlit polished wood yoga and meditation hall with bamboo garden view',
-    title: 'Zen Meditation & Sound Healing Hall',
-    categoryLabel: 'Therapy & Meditation',
-    location: 'Theni Sanctuary',
-    description:
-      'A peaceful sanctuary with natural wood flooring, acoustic clarity, and expansive views into bamboo gardens where daily morning yoga, somatic breathwork, and sound meditations occur.',
-    highlights: ['Tibetan singing bowls', 'Bamboo garden backdrop', 'Natural cross-ventilation'],
-  },
-  {
-    id: 'therapy-sanctuary',
-    src: therapySanctuaryImg,
-    image: therapySanctuaryImg,
-    alt: 'Quiet, warmly-lit psychotherapy consultation room with comfortable armchairs',
-    title: 'Individual Psychotherapy & Consultation Suite',
-    categoryLabel: 'Therapy & Meditation',
-    location: 'Clinical Wing',
-    description:
-      'A quiet, confidential clinical environment designed for one-on-one psychiatric evaluations, cognitive behavioral therapy, and trauma processing in deep psychological comfort.',
-    highlights: ['Acoustic soundproofing', 'Supportive seating', 'Confidential space'],
-  },
-  {
-    id: 'sanctuary-gardens',
-    src: sanctuaryGardensImg,
-    image: sanctuaryGardensImg,
-    alt: 'Lush green landscaped botanical garden paths with seating areas and flowers',
-    title: 'Restorative Botanical & Herbal Walkways',
-    categoryLabel: 'Gardens & Nature',
-    location: 'Outdoor Healing Grounds',
-    description:
-      'Winding walking paths lined with indigenous medicinal flora, aromatic herbs, and shaded gazebos where patients take mindful morning constitutionals and reflect in open air.',
-    highlights: ['Medicinal herbal plants', 'Shaded reflexology paths', 'Tranquil sitting gazebos'],
-  },
-  {
-    id: 'mindfulness-atrium',
-    src: mindfulnessAtriumImg,
-    image: mindfulnessAtriumImg,
-    alt: 'Expansive indoor garden atrium bathed in soft natural daylight',
-    title: 'Central Sunlit Mindfulness Atrium',
-    categoryLabel: 'Therapy & Meditation',
-    location: 'Central Pavilion',
-    description:
-      'A sky-lit indoor sanctuary that bridges exterior nature with interior safety. Ideal for small group discussions, reading, and gentle communal fellowship during recovery milestones.',
-    highlights: ['Natural skylight illumination', 'Living indoor greenery', 'Calm acoustics'],
-  },
-  {
-    id: 'recovery-environment',
-    src: recoveryEnvironmentImg,
-    image: recoveryEnvironmentImg,
-    alt: 'Warm, spotless residential corridor and recovery living quarters',
-    title: 'Residential Recovery Lounge & Corridor',
-    categoryLabel: 'Suites & Living Quarters',
+    id: 'inpatient-recovery-ward',
+    src: inpatientWardImg,
+    image: inpatientWardImg,
+    alt: 'Patient inpatient recovery beds and peaceful themed dormitory ward at Aura',
+    title: 'Inpatient Residential Ward',
+    categoryLabel: 'Living Quarters',
     location: 'Residential Wing',
     description:
-      'Immaculately maintained residential quarters providing comfortable reading nooks, supportive group lounges, and round-the-clock nursing access for every resident.',
-    highlights: ['24/7 Nurse monitoring post', 'Quiet reading library', 'Spotless sanitized care'],
+      'Clean, comfortable residential accommodations with dedicated care beds, vibrant uplifting wall murals, and constant monitoring for patient safety and dignity.',
   },
   {
-    id: 'courtyard-pavilion',
-    src: heroCenterImg,
-    image: heroCenterImg,
-    alt: 'Courtyard architecture with tranquil outdoor family visiting pavilion',
-    title: 'Central Courtyard & Family Gathering Pavilion',
-    categoryLabel: 'Campus & Architecture',
-    location: 'Main Center Grounds',
+    id: 'founder-abishek',
+    src: abishekImg,
+    image: abishekImg,
+    alt: 'Founder Abishek A at Aura De-Addiction Center',
+    title: 'Founder — Abishek A',
+    categoryLabel: 'Leadership',
+    location: 'Executive Office',
     description:
-      'A serene outdoor pavilion with shaded seating designated for supportive family visitations, counseling orientations, and milestone celebration ceremonies.',
-    highlights: ['Family visitation seating', 'Landscaped water fountains', 'Safe private boundary'],
+      'Founder and Director of Rehabilitation, providing visionary leadership, family counseling, and long-term aftercare support.',
   },
   {
-    id: 'top-banner-nature',
-    src: topBannerImg,
-    image: topBannerImg,
-    alt: 'Panoramic vista of lush green hillside sanctuary grounds and open blue skies',
-    title: 'Panoramic Western Ghats Mountain Views',
-    categoryLabel: 'Gardens & Nature',
-    location: 'Theni Foothills',
+    id: 'cofounder-amanulla',
+    src: amanullaImg,
+    image: amanullaImg,
+    alt: 'Co-Founder Amanulla N at Aura De-Addiction Center',
+    title: 'Co-Founder — Amanulla N',
+    categoryLabel: 'Leadership',
+    location: 'Admissions Office',
     description:
-      'Surrounded by the serene foothills of the Western Ghats, the sanctuary offers clean mountain air, sweeping green vistas, and isolation from metropolitan noise and relapse triggers.',
-    highlights: ['Unpolluted mountain air', 'Natural barrier from city triggers', 'Expansive skyline'],
+      'Co-Founder and Head of Admissions, coordinating 24/7 crisis response, confidential patient assessments, and family guidance.',
+  },
+  {
+    id: 'medical-officer-gowthaman',
+    src: gowthamanImg,
+    image: gowthamanImg,
+    alt: 'Medical Officer Dr. T. Gowthaman at Aura De-Addiction Center',
+    title: 'Medical Officer — Dr. T. Gowthaman',
+    categoryLabel: 'Medical Leadership',
+    location: 'Clinical Ward',
+    description:
+      'Medical Officer overseeing inpatient detoxification, medical stabilization, and daily clinical wellness monitoring.',
   },
 ];
 
@@ -212,14 +154,14 @@ export default function Gallery() {
           animationMode="all"
           speed={0.55}
           radius={170}
-          cardWidth={110}
-          cardHeight={110}
-          verticalSpacing={60}
+          cardWidth={120}
+          cardHeight={120}
+          verticalSpacing={65}
           perspective={1000}
           cardRadius={12}
           centerScale={1.2}
           edgeBlur={6}
-          cardsPerTurn={7}
+          cardsPerTurn={6}
           pauseOnHover={false}
           direction="up"
           rotation={0}
