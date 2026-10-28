@@ -18,7 +18,7 @@
 
   body {
     min-height: 100vh;
-    overflow-x: hidden;
+    overflow-x: clip;
     position: relative;
     background-color: var(--aura-warm-white);
   }
@@ -70,5 +70,26 @@
       rgba(252, 245, 244, 0.45) 45%,
       rgba(250, 249, 246, 1) 85%
     );
+  }
+
+  /* Viewport Height Calibrator for Hero Section */
+  .hero-viewport-height {
+    min-height: auto;
+    height: auto;
+  }
+
+  @media (min-width: 1024px) {
+    .hero-viewport-height {
+      min-height: auto;
+      height: auto;
+    }
+  }
+
+  /* Editorial Slender Serif Headline (Non-Bold Reference Style) */
+  .hero-editorial-headline {
+    font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif !important;
+    font-weight: 400 !important;
+    font-style: normal !important;
+    letter-spacing: -0.01em;
   }
 }

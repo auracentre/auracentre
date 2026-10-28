@@ -1,6 +1,6 @@
 /**
  * Motion Architecture & Animation Variants
- * RR De-Addiction Center ("Aura – For Better Life")
+ * De-Addiction Center ("Aura – For Better Life")
  *
  * Designed with a strict focus on mobile performance:
  * - Uses only hardware-accelerated CSS properties: transform (translate, scale) & opacity

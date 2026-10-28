@@ -1,7 +1,10 @@
 :root {
+  /* Dynamic Header Height Token (auto-calibrated by Hero component) */
+  --aura-header-height: 77px;
+
   /* ==========================================================================
      AURA BRAND DESIGN TOKENS
-     RR De-Addiction Center: "Aura – For Better Life"
+     De-Addiction Center: "Aura – For Better Life"
      ========================================================================== */
 
   /* Primary Leaf Green (Hope, Renewal, Growth) */

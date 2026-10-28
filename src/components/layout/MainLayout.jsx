@@ -1,5 +1,5 @@
-import React from 'react';
-import { Outlet } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Outlet, useLocation } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
 
@@ -8,6 +8,14 @@ import Footer from './Footer';
  * Semantic wrapper providing persistent header, main content outlet, and footer.
  */
 export default function MainLayout() {
+  const location = useLocation();
+
+  // Scroll to top on route change if not navigating to a hash anchor
+  useEffect(() => {
+    if (!location.hash) {
+      window.scrollTo(0, 0);
+    }
+  }, [location.pathname, location.hash]);
   return (
     <div className="min-h-screen flex flex-col bg-aura-warm-white text-aura-charcoal">
       {/* Skip to Content Link for Keyboard Accessibility */}

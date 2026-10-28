@@ -1,12 +1,16 @@
-import React from 'react';
-import PlaceholderPage from './PlaceholderPage';
+import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
+/**
+ * About Page
+ * Redirects immediately to the unified About Us section on the Home page.
+ */
 export default function About() {
-  return (
-    <PlaceholderPage
-      title="About Aura – RR De-Addiction Center"
-      subtitle="Discover our compassionate philosophy, our multidisciplinary psychiatric and clinical team, and our commitment to dignity and long-term recovery."
-      category="About"
-    />
-  );
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    navigate('/#about-aura', { replace: true });
+  }, [navigate]);
+
+  return null;
 }

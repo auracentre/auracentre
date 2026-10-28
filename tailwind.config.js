@@ -63,13 +63,21 @@ export default {
           },
           forest: {
             DEFAULT: '#43583C',
+            hover: '#34462E',
             light: '#536D4B',
           },
           softPink: '#E7B8B9',
+          heading: '#20251F',
+          support: '#60665C',
+          mutedText: '#899082',
+          divider: '#E8ECE4',
         },
       },
       fontFamily: {
+        'dm-serif': ['"DM Serif Display"', 'Georgia', 'serif'],
+        'dm-sans': ['"DM Sans"', 'system-ui', 'sans-serif'],
         sans: [
+          '"DM Sans"',
           'Plus Jakarta Sans',
           'Inter',
           '-apple-system',
@@ -79,7 +87,8 @@ export default {
           'sans-serif',
         ],
         serif: [
-          'Playfair Display',
+          '"Cormorant Garamond"',
+          '"Playfair Display"',
           'Georgia',
           'serif',
         ],

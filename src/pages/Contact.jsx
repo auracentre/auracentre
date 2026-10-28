@@ -1,12 +1,12 @@
 import React from 'react';
-import PlaceholderPage from './PlaceholderPage';
+import { Navigate } from 'react-router-dom';
 
+/**
+ * Contact Route Redirect
+ *
+ * The Contact section is integrated into the bottom of the landing page (/#contact).
+ * Any direct navigation to /contact is immediately redirected to /#contact.
+ */
 export default function Contact() {
-  return (
-    <PlaceholderPage
-      title="Confidential Contact &amp; Consultation"
-      subtitle="Take the first brave step. Connect directly with our confidential intake specialists for personalized guidance and family support."
-      category="Admissions"
-    />
-  );
+  return <Navigate to="/#contact" replace />;
 }
