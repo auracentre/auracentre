@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import abishekImg from '../assets/images/abishek-director.png';
 import amanullaImg from '../assets/images/amanulla-cofounder.png';
 import gowthamanImg from '../assets/images/gowthaman-medical-officer.png';
+import kanagaporaniImg from '../assets/images/kanagaporani-psychiatrist.png';
 
 /**
  * Crew & Leadership Data
@@ -45,6 +46,18 @@ const CREW_DATA = [
     otherSpecialties: 'Aura De-Addiction Center • Inpatient Medical Care & Detox Oversight',
     image: gowthamanImg,
     alt: 'Medical Officer Dr. T. Gowthaman',
+  },
+  {
+    id: 'dr-kanagaporani',
+    number: '04',
+    role: 'PSYCHIATRIST',
+    nameUpper: 'DR. KANAGAPORANI M',
+    name: 'Dr. Kanagaporani M',
+    credentials: 'MD, Consultant Psychiatrist',
+    primarySpecialty: 'Psychiatrist',
+    otherSpecialties: 'Aura De-Addiction Center • Psychiatric Evaluation & Mental Health Care',
+    image: kanagaporaniImg,
+    alt: 'Psychiatrist Dr. Kanagaporani M',
   },
 ];
 

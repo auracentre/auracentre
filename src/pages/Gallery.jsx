@@ -13,6 +13,7 @@ import inpatientWardImg from '../assets/images/aura-mindfulness-conservatory.png
 import abishekImg from '../assets/images/abishek-director.png';
 import amanullaImg from '../assets/images/amanulla-cofounder.png';
 import gowthamanImg from '../assets/images/gowthaman-medical-officer.png';
+import kanagaporaniImg from '../assets/images/kanagaporani-psychiatrist.png';
 import InfiniteSpiral from '../components/common/InfiniteSpiral';
 
 /**
@@ -84,6 +85,17 @@ const SPIRAL_ITEMS = [
     location: 'Clinical Ward',
     description:
       'Medical Officer overseeing inpatient detoxification, medical stabilization, and daily clinical wellness monitoring.',
+  },
+  {
+    id: 'psychiatrist-kanagaporani',
+    src: kanagaporaniImg,
+    image: kanagaporaniImg,
+    alt: 'Psychiatrist Dr. Kanagaporani M at Aura De-Addiction Center',
+    title: 'Psychiatrist — Dr. Kanagaporani M',
+    categoryLabel: 'Psychiatric Care',
+    location: 'Consultation Suite',
+    description:
+      'Consultant Psychiatrist specializing in addiction psychiatry, dual-diagnosis management, cognitive therapies, and comprehensive mental health restoration.',
   },
 ];
 
