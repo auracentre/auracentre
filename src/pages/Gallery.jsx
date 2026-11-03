@@ -15,6 +15,7 @@ import amanullaImg from '../assets/images/amanulla-cofounder.png';
 import gowthamanImg from '../assets/images/gowthaman-medical-officer.png';
 import kanagaporaniImg from '../assets/images/kanagaporani-psychiatrist.png';
 import rajeshKannanImg from '../assets/images/rajesh-kannan-psychiatrist.png';
+import kamarajImg from '../assets/images/kamaraj-psychiatrist.png';
 import InfiniteSpiral from '../components/common/InfiniteSpiral';
 
 /**
@@ -108,6 +109,17 @@ const SPIRAL_ITEMS = [
     location: 'Theni Consultation Centre',
     description:
       'Consultant Psychiatrist (MD Psychiatry) providing clinical psychiatric care, substance use recovery programs, and specialized mental health therapies in Theni.',
+  },
+  {
+    id: 'psychiatrist-kamaraj',
+    src: kamarajImg,
+    image: kamarajImg,
+    alt: 'Psychiatrist Dr. Kamaraj at Aura De-Addiction Center',
+    title: 'Psychiatrist — Dr. Kamaraj',
+    categoryLabel: 'Psychiatric Care',
+    location: 'Clinical Consultation',
+    description:
+      'Consultant Psychiatrist (MD Psychiatry) guiding comprehensive psychiatric evaluation, cognitive rehabilitation, and personalized recovery roadmaps.',
   },
 ];
 

@@ -7,6 +7,7 @@ import amanullaImg from '../assets/images/amanulla-cofounder.png';
 import gowthamanImg from '../assets/images/gowthaman-medical-officer.png';
 import kanagaporaniImg from '../assets/images/kanagaporani-psychiatrist.png';
 import rajeshKannanImg from '../assets/images/rajesh-kannan-psychiatrist.png';
+import kamarajImg from '../assets/images/kamaraj-psychiatrist.png';
 
 /**
  * Crew & Leadership Data
@@ -71,6 +72,18 @@ const CREW_DATA = [
     otherSpecialties: 'Aura De-Addiction Center • Psychiatric Evaluation & De-Addiction Care (Theni)',
     image: rajeshKannanImg,
     alt: 'Psychiatrist Dr. Rajesh Kannan',
+  },
+  {
+    id: 'dr-kamaraj',
+    number: '06',
+    role: 'PSYCHIATRIST',
+    nameUpper: 'DR. KAMARAJ',
+    name: 'Dr. Kamaraj',
+    credentials: 'MD (Psychiatry), Consultant Psychiatrist',
+    primarySpecialty: 'Psychiatrist',
+    otherSpecialties: 'Aura De-Addiction Center • Clinical Psychiatry & Substance Recovery Support',
+    image: kamarajImg,
+    alt: 'Psychiatrist Dr. Kamaraj',
   },
 ];
 
