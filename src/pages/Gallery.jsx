@@ -14,6 +14,7 @@ import abishekImg from '../assets/images/abishek-director.png';
 import amanullaImg from '../assets/images/amanulla-cofounder.png';
 import gowthamanImg from '../assets/images/gowthaman-medical-officer.png';
 import kanagaporaniImg from '../assets/images/kanagaporani-psychiatrist.png';
+import rajeshKannanImg from '../assets/images/rajesh-kannan-psychiatrist.png';
 import InfiniteSpiral from '../components/common/InfiniteSpiral';
 
 /**
@@ -90,12 +91,23 @@ const SPIRAL_ITEMS = [
     id: 'psychiatrist-kanagaporani',
     src: kanagaporaniImg,
     image: kanagaporaniImg,
-    alt: 'Psychiatrist Dr. Kanagaporani M at Aura De-Addiction Center',
-    title: 'Psychiatrist — Dr. Kanagaporani M',
+    alt: 'Psychiatrist Dr. M. Kanagaporani at Aura De-Addiction Center',
+    title: 'Psychiatrist — Dr. M. Kanagaporani',
     categoryLabel: 'Psychiatric Care',
     location: 'Consultation Suite',
     description:
       'Consultant Psychiatrist specializing in addiction psychiatry, dual-diagnosis management, cognitive therapies, and comprehensive mental health restoration.',
+  },
+  {
+    id: 'psychiatrist-rajesh-kannan',
+    src: rajeshKannanImg,
+    image: rajeshKannanImg,
+    alt: 'Psychiatrist Dr. Rajesh Kannan at Aura De-Addiction Center',
+    title: 'Psychiatrist — Dr. Rajesh Kannan',
+    categoryLabel: 'Psychiatric Care',
+    location: 'Theni Consultation Centre',
+    description:
+      'Consultant Psychiatrist (MD Psychiatry) providing clinical psychiatric care, substance use recovery programs, and specialized mental health therapies in Theni.',
   },
 ];
 

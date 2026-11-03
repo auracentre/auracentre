@@ -6,6 +6,7 @@ import abishekImg from '../assets/images/abishek-director.png';
 import amanullaImg from '../assets/images/amanulla-cofounder.png';
 import gowthamanImg from '../assets/images/gowthaman-medical-officer.png';
 import kanagaporaniImg from '../assets/images/kanagaporani-psychiatrist.png';
+import rajeshKannanImg from '../assets/images/rajesh-kannan-psychiatrist.png';
 
 /**
  * Crew & Leadership Data
@@ -51,13 +52,25 @@ const CREW_DATA = [
     id: 'dr-kanagaporani',
     number: '04',
     role: 'PSYCHIATRIST',
-    nameUpper: 'DR. KANAGAPORANI M',
-    name: 'Dr. Kanagaporani M',
+    nameUpper: 'DR. M. KANAGAPORANI',
+    name: 'Dr. M. Kanagaporani',
     credentials: 'MD, Consultant Psychiatrist',
     primarySpecialty: 'Psychiatrist',
     otherSpecialties: 'Aura De-Addiction Center • Psychiatric Evaluation & Mental Health Care',
     image: kanagaporaniImg,
-    alt: 'Psychiatrist Dr. Kanagaporani M',
+    alt: 'Psychiatrist Dr. M. Kanagaporani',
+  },
+  {
+    id: 'dr-rajesh-kannan',
+    number: '05',
+    role: 'PSYCHIATRIST (THENI)',
+    nameUpper: 'DR. RAJESH KANNAN',
+    name: 'Dr. Rajesh Kannan',
+    credentials: 'MD (Psychiatry), Consultant Psychiatrist',
+    primarySpecialty: 'Psychiatrist',
+    otherSpecialties: 'Aura De-Addiction Center • Psychiatric Evaluation & De-Addiction Care (Theni)',
+    image: rajeshKannanImg,
+    alt: 'Psychiatrist Dr. Rajesh Kannan',
   },
 ];
 
@@ -157,7 +170,7 @@ export default function Doctors() {
                   onClick={() => setActiveIndex(index)}
                   onMouseEnter={() => setActiveIndex(index)}
                   onFocus={() => setActiveIndex(index)}
-                  className={`group w-full text-left py-5 sm:py-6 cursor-pointer transition-all duration-200 outline-none focus-visible:ring-2 focus-visible:ring-gray-900 rounded-sm border-b ${
+                  className={`group w-full text-left py-5 sm:py-6 first:pt-1 cursor-pointer transition-all duration-200 outline-none focus-visible:ring-2 focus-visible:ring-gray-900 rounded-sm border-b border-solid ${
                     isActive ? 'border-gray-900 border-b-2' : 'border-gray-200 hover:border-gray-300'
                   }`}
                   aria-pressed={isActive}
@@ -216,7 +229,7 @@ export default function Doctors() {
           </div>
 
           {/* RIGHT COLUMN: Active Member Portrait & Caption (Sticky) */}
-          <div className="lg:col-span-5 lg:sticky lg:top-20">
+          <div className="lg:col-span-5 lg:sticky lg:top-24">
             <div className="w-full max-w-[420px] mx-auto lg:max-w-none">
               {/* Portrait Image Frame */}
               <div className="relative w-full aspect-[4/5] max-h-[360px] sm:max-h-[400px] lg:max-h-[calc(100vh-210px)] rounded-[26px] overflow-hidden bg-gray-100 shadow-sm border border-gray-100">
