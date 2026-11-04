@@ -20,12 +20,12 @@ vi.mock('../../hooks/useMotionPreference', () => ({
 describe('Footer Component', () => {
   const mockBranches = [
     {
-      id: 'theni-main',
-      name: 'Theni — Main Centre',
+      id: 'theni-branch',
+      name: 'Theni — Branch',
       address: '128/W9, Aruna Complex, Kodu Vilarpatti, Theni – 625534',
       phone: '7418661994',
       displayPhone: '+91 74186 61994',
-      directionsUrl: 'https://maps.google.com/?q=Theni',
+      directionsUrl: 'https://maps.app.goo.gl/R5tQNixgxB4i5FqW7?g_st=ac',
     },
     {
       id: 'dindigul-branch',
@@ -33,7 +33,7 @@ describe('Footer Component', () => {
       address: '54, Ramachandra Nagar, Dindigul – 624003',
       phone: '6380660702',
       displayPhone: '+91 63806 60702',
-      directionsUrl: 'https://maps.google.com/?q=Dindigul',
+      directionsUrl: 'https://maps.app.goo.gl/i4vuVctm5zXGbNaP8',
     },
   ];
 
@@ -84,20 +84,20 @@ describe('Footer Component', () => {
 
     // Verified branch names
     await waitFor(() => {
-      expect(screen.getByText('Theni — Main Centre')).toBeDefined();
+      expect(screen.getByText('Theni — Branch')).toBeDefined();
       expect(screen.getByText('Dindigul — Branch')).toBeDefined();
     });
 
     // Address and map links
     const theniLink = screen.getByRole('link', {
-      name: /get directions to theni — main centre/i,
+      name: /get directions to theni — branch/i,
     });
-    expect(theniLink.getAttribute('href')).toBe('https://maps.google.com/?q=Theni');
+    expect(theniLink.getAttribute('href')).toBe('https://maps.app.goo.gl/R5tQNixgxB4i5FqW7?g_st=ac');
     expect(theniLink.getAttribute('target')).toBe('_blank');
 
     // Phone links with tel: protocol
     const theniPhoneLink = screen.getByRole('link', {
-      name: /call theni — main centre at \+91 74186 61994/i,
+      name: /call theni — branch at \+91 74186 61994/i,
     });
     expect(theniPhoneLink.getAttribute('href')).toBe('tel:7418661994');
 

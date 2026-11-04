@@ -29,7 +29,7 @@ const SPIRAL_ITEMS = [
     alt: 'Aura De-Addiction & Psychiatric Treatment Centre Dindigul Facility',
     title: 'Aura De-Addiction Centre Facility',
     categoryLabel: 'Centre & Campus',
-    location: 'Dindigul — Main Centre',
+    location: 'Dindigul — Branch',
     description:
       'Official residential de-addiction and psychiatric treatment facility in Dindigul, providing safe, confidential inpatient stabilization and round-the-clock medical care.',
   },

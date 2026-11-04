@@ -5,7 +5,7 @@
  * and contact coordinator information.
  */
 
-const STORAGE_KEY = 'aura_contact_data_v1';
+const STORAGE_KEY = 'aura_contact_data_v2';
 
 export const contactService = {
   /**

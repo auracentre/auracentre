@@ -9,14 +9,18 @@ export const siteConfig = {
   contact: {
     helpline: '7418661994',
     theni: {
-      name: 'Theni — Main Centre',
+      name: 'Theni — Branch',
+      type: 'Branch',
       address: '128/W9, Aruna Complex, Kodu Vilarpatti, Theni – 625534',
       phone: '7418661994',
+      directionsUrl: 'https://maps.app.goo.gl/R5tQNixgxB4i5FqW7?g_st=ac',
     },
     dindigul: {
       name: 'Dindigul — Branch',
+      type: 'Branch',
       address: '54, Ramachandra Nagar, Seventh Day School Backside, Natham Road, Dindigul – 624003',
       phone: '6380660702',
+      directionsUrl: 'https://maps.app.goo.gl/i4vuVctm5zXGbNaP8',
     },
     coordinators: [
       { name: 'Abishek A', phone: '8883130957' },
