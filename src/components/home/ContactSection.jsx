@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import {
   Phone,
   MapPin,
@@ -7,9 +7,14 @@ import {
   AlertCircle,
   RefreshCw,
   ArrowUpRight,
+  X,
+  Sparkles,
+  Eye,
 } from 'lucide-react';
 import { useMotionPreference } from '../../hooks/useMotionPreference';
 import contactService from '../../services/contactService';
+import theniFacilityImg from '../../assets/images/aura-theni-facility.png';
+import dindigulFacilityImg from '../../assets/images/aura-facility-enhanced.jpg';
 
 /**
  * ContactSection Component — Aura "For Better Life"
@@ -30,6 +35,7 @@ export default function ContactSection() {
   const [status, setStatus] = useState('loading'); // 'loading' | 'success' | 'error' | 'empty'
   const [data, setData] = useState({ branches: [], contactPersons: [] });
   const [errorMessage, setErrorMessage] = useState(null);
+  const [activeBranchModal, setActiveBranchModal] = useState(null);
 
   // Asynchronous data loader for retry and refresh
   const handleRetry = useCallback(async () => {
@@ -83,6 +89,26 @@ export default function ContactSection() {
       ignore = true;
     };
   }, []);
+
+  // Lock body scroll and close on Escape when modal is open
+  useEffect(() => {
+    if (!activeBranchModal) return;
+
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') {
+        setActiveBranchModal(null);
+      }
+    };
+
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = originalOverflow;
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [activeBranchModal]);
 
   // Motion variants
   const fadeUpVariant = {
@@ -233,26 +259,53 @@ export default function ContactSection() {
 
             {/* Branch Cards Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
-              {data.branches.map((branch, index) => (
-                <motion.article
-                  key={branch.id}
-                  variants={fadeUpVariant}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true, margin: '-40px' }}
-                  custom={0.15 + index * 0.1}
-                  className="relative flex flex-col justify-between p-7 sm:p-9 rounded-[24px] bg-white border border-[#E8ECE4] shadow-[0_8px_30px_-6px_rgba(38,56,43,0.06)] hover:shadow-[0_12px_40px_-6px_rgba(38,56,43,0.1)] transition-all duration-300"
-                >
-                  <div>
-                    {/* Branch Category Badge */}
-                    <div className="flex items-center justify-between gap-4 mb-4">
-                      <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold tracking-wide uppercase bg-[#FAF9F4] text-[#43583C] border border-[#E8ECE4]">
-                        {branch.type || 'Centre'}
-                      </span>
-                      <span className="font-mono text-xs text-[#81916F] font-medium">
-                        0{index + 1}
-                      </span>
-                    </div>
+              {data.branches.map((branch, index) => {
+                const isTheni =
+                  branch.name?.toLowerCase().includes('theni') || branch.id?.includes('theni');
+                const branchImage = isTheni ? theniFacilityImg : dindigulFacilityImg;
+
+                return (
+                  <motion.article
+                    key={branch.id}
+                    variants={fadeUpVariant}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: '-40px' }}
+                    custom={0.15 + index * 0.1}
+                    className="relative flex flex-col justify-between p-7 sm:p-9 rounded-[24px] bg-white border border-[#E8ECE4] shadow-[0_8px_30px_-6px_rgba(38,56,43,0.06)] hover:shadow-[0_12px_40px_-6px_rgba(38,56,43,0.1)] transition-all duration-300"
+                  >
+                    <div>
+                      {/* Branch Category Badge (Interactive & Shining) */}
+                      <div className="flex items-center justify-between gap-4 mb-4">
+                        <button
+                          type="button"
+                          onClick={() =>
+                            setActiveBranchModal({
+                              name: branch.name,
+                              address: branch.address,
+                              phone: branch.phone,
+                              displayPhone: branch.displayPhone || branch.phone,
+                              directionsUrl: branch.directionsUrl,
+                              image: branchImage,
+                            })
+                          }
+                          className="relative group inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold tracking-wider uppercase text-[#1F3C2B] bg-gradient-to-r from-[#F2F8F4] via-[#E2F0E7] to-[#F2F8F4] border border-[#6FAF85]/70 animate-branch-glow hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer overflow-hidden"
+                          title="Click to view branch facility photo"
+                          aria-label={`View facility photo for ${branch.name}`}
+                        >
+                          {/* Shining animated light sweep */}
+                          <span
+                            aria-hidden="true"
+                            className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/85 to-transparent -translate-x-full animate-shimmer-sweep pointer-events-none"
+                          />
+                          <Sparkles className="w-3.5 h-3.5 text-[#2F5C40] animate-pulse" aria-hidden="true" />
+                          <span className="relative z-10 font-bold tracking-wider">{branch.type || 'BRANCH'}</span>
+                          <Eye className="w-3 h-3 text-[#2F5C40]/80 ml-0.5 group-hover:text-[#1F3C2B] transition-colors" aria-hidden="true" />
+                        </button>
+                        <span className="font-mono text-xs text-[#81916F] font-medium">
+                          0{index + 1}
+                        </span>
+                      </div>
 
                     {/* Branch Name */}
                     <h4
@@ -325,10 +378,93 @@ export default function ContactSection() {
                     </a>
                   </div>
                 </motion.article>
-              ))}
-            </div>
+              );
+            })}
+          </div>
           </div>
         )}
+
+        {/* =========================================================
+            BRANCH FACILITY PHOTO MODAL
+           ========================================================= */}
+        <AnimatePresence>
+          {activeBranchModal && (
+            <div
+              className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/75 backdrop-blur-sm"
+              onClick={() => setActiveBranchModal(null)}
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="branch-modal-title"
+            >
+              <motion.div
+                initial={{ opacity: 0, scale: 0.94, y: 15 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.94, y: 15 }}
+                transition={{ duration: 0.24, ease: 'easeOut' }}
+                onClick={(e) => e.stopPropagation()}
+                className="relative w-full max-w-2xl bg-white rounded-3xl shadow-2xl border border-gray-100 overflow-hidden flex flex-col max-h-[92vh]"
+              >
+                {/* Modal Header */}
+                <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100 bg-[#FAF9F4]">
+                  <div>
+                    <span className="inline-flex items-center gap-1.5 text-xs font-bold tracking-wider uppercase text-[#2F5C40]">
+                      <Sparkles className="w-3.5 h-3.5 text-[#4A8F64]" aria-hidden="true" />
+                      Branch Facility
+                    </span>
+                    <h3 id="branch-modal-title" className="font-serif text-xl sm:text-2xl font-normal text-gray-900 leading-tight mt-0.5">
+                      {activeBranchModal.name}
+                    </h3>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => setActiveBranchModal(null)}
+                    className="w-9 h-9 rounded-full bg-gray-200/70 hover:bg-gray-200 flex items-center justify-center text-gray-700 hover:text-black transition-colors"
+                    aria-label="Close modal"
+                  >
+                    <X className="w-5 h-5" aria-hidden="true" />
+                  </button>
+                </div>
+
+                {/* Photo Viewport */}
+                <div className="relative w-full max-h-[65vh] bg-stone-950 flex items-center justify-center overflow-hidden">
+                  <img
+                    src={activeBranchModal.image}
+                    alt={`${activeBranchModal.name} Facility`}
+                    className="w-full max-h-[65vh] object-contain mx-auto"
+                  />
+                </div>
+
+                {/* Modal Footer info & actions */}
+                <div className="p-5 sm:p-6 bg-white flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-t border-gray-100">
+                  <div className="flex items-start gap-2.5 text-xs sm:text-sm text-gray-600 max-w-md">
+                    <MapPin className="w-4 h-4 text-[#2F5C40] shrink-0 mt-0.5" aria-hidden="true" />
+                    <span>{activeBranchModal.address}</span>
+                  </div>
+                  <div className="flex items-center gap-3 shrink-0">
+                    <a
+                      href={`tel:${activeBranchModal.phone}`}
+                      className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold text-white bg-[#43583C] hover:bg-[#34462E] transition-colors"
+                    >
+                      <Phone className="w-3.5 h-3.5" aria-hidden="true" />
+                      <span>Call Now</span>
+                    </a>
+                    {activeBranchModal.directionsUrl && (
+                      <a
+                        href={activeBranchModal.directionsUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold text-[#43583C] bg-white border border-[#43583C] hover:bg-[#FAF9F4] transition-colors"
+                      >
+                        <Navigation className="w-3.5 h-3.5" aria-hidden="true" />
+                        <span>Get Directions</span>
+                      </a>
+                    )}
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+          )}
+        </AnimatePresence>
       </div>
     </section>
   );

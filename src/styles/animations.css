@@ -113,6 +113,35 @@
   animation-play-state: paused;
 }
 
+/* Luminous Shining Shimmer Sweep & Glow for interactive highlights */
+@keyframes shimmerSweep {
+  0% {
+    transform: translateX(-160%) skewX(-20deg);
+  }
+  35%, 100% {
+    transform: translateX(260%) skewX(-20deg);
+  }
+}
+
+.animate-shimmer-sweep {
+  animation: shimmerSweep 2.4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes branchGlow {
+  0%, 100% {
+    box-shadow: 0 0 8px rgba(91, 155, 110, 0.35), 0 2px 4px rgba(67, 88, 60, 0.08);
+    border-color: rgba(111, 175, 133, 0.6);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(91, 155, 110, 0.7), 0 0 30px rgba(145, 185, 120, 0.4);
+    border-color: rgba(58, 116, 80, 0.95);
+  }
+}
+
+.animate-branch-glow {
+  animation: branchGlow 2.4s ease-in-out infinite;
+}
+
 /* Reduced Motion Support */
 @media (prefers-reduced-motion: reduce) {
   *,
