@@ -92,8 +92,8 @@ const SPIRAL_ITEMS = [
     id: 'psychiatrist-kanagaporani',
     src: kanagaporaniImg,
     image: kanagaporaniImg,
-    alt: 'Psychiatrist Dr. M. Kanagaporani at Aura De-Addiction Center',
-    title: 'Psychiatrist — Dr. M. Kanagaporani',
+    alt: 'Consultant Psychiatrist Dr. M. Kanagaporani at Aura De-Addiction Center',
+    title: 'Consultant Psychiatrist — Dr. M. Kanagaporani',
     categoryLabel: 'Psychiatric Care',
     location: 'Consultation Suite',
     description:
@@ -103,8 +103,8 @@ const SPIRAL_ITEMS = [
     id: 'psychiatrist-rajesh-kannan',
     src: rajeshKannanImg,
     image: rajeshKannanImg,
-    alt: 'Psychiatrist Dr. Rajesh Kannan at Aura De-Addiction Center',
-    title: 'Psychiatrist — Dr. Rajesh Kannan',
+    alt: 'Consultant Psychiatrist Dr. Rajesh Kannan at Aura De-Addiction Center',
+    title: 'Consultant Psychiatrist — Dr. Rajesh Kannan',
     categoryLabel: 'Psychiatric Care',
     location: 'Theni Consultation Centre',
     description:
@@ -114,8 +114,8 @@ const SPIRAL_ITEMS = [
     id: 'psychiatrist-kamaraj',
     src: kamarajImg,
     image: kamarajImg,
-    alt: 'Psychiatrist Dr. Kamaraj at Aura De-Addiction Center',
-    title: 'Psychiatrist — Dr. Kamaraj',
+    alt: 'Consultant Psychiatrist Dr. Kamaraj at Aura De-Addiction Center',
+    title: 'Consultant Psychiatrist — Dr. Kamaraj',
     categoryLabel: 'Psychiatric Care',
     location: 'Clinical Consultation',
     description:
