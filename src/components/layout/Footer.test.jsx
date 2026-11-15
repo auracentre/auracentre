@@ -22,7 +22,7 @@ describe('Footer Component', () => {
     {
       id: 'theni-branch',
       name: 'Theni — Branch',
-      address: '128B, Aruna Complex, Kodu Vilarpatti, Theni – 625534',
+      address: '128B, Aruna Complex, Koduvilarpatti, Theni – 625534',
       phone: '7418661994',
       displayPhone: '+91 74186 61994',
       directionsUrl: 'https://maps.app.goo.gl/R5tQNixgxB4i5FqW7?g_st=ac',
