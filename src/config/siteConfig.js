@@ -28,6 +28,12 @@ export const siteConfig = {
     ],
     hours: '24/7 Intake & Emergency Support',
   },
+  social: {
+    instagram:
+      'https://www.instagram.com/auradeaddictioncentre?srtk=ZndhbXFkNmZzOGJi&utm_source=qr',
+    facebook: 'https://www.facebook.com/share/1K8zESxg7J/?mibextid=wwXIfr',
+    youtube: 'https://youtube.com/@auradeaddictioncentre?si=fns1ebrmv29kcf6o',
+  },
   routes: [
     { title: 'Home', path: '/' },
     { title: 'About Us', path: '/#about-aura' },

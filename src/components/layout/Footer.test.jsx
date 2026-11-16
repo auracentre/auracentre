@@ -186,4 +186,38 @@ describe('Footer Component', () => {
 
     document.body.removeChild(mockElement);
   });
+
+  it('renders Follow Us section with Instagram, Facebook, and YouTube links', async () => {
+    contactService.getContactData.mockResolvedValueOnce({ branches: mockBranches });
+
+    await act(async () => {
+      render(<Footer />);
+    });
+
+    expect(screen.getByText('FOLLOW US')).toBeDefined();
+
+    const igLink = screen.getByRole('link', {
+      name: /follow aura de-addiction centre on instagram/i,
+    });
+    expect(igLink.getAttribute('href')).toBe(
+      'https://www.instagram.com/auradeaddictioncentre?srtk=ZndhbXFkNmZzOGJi&utm_source=qr'
+    );
+    expect(igLink.getAttribute('target')).toBe('_blank');
+
+    const fbLink = screen.getByRole('link', {
+      name: /follow aura de-addiction centre on facebook/i,
+    });
+    expect(fbLink.getAttribute('href')).toBe(
+      'https://www.facebook.com/share/1K8zESxg7J/?mibextid=wwXIfr'
+    );
+    expect(fbLink.getAttribute('target')).toBe('_blank');
+
+    const ytLink = screen.getByRole('link', {
+      name: /subscribe to aura de-addiction centre on youtube/i,
+    });
+    expect(ytLink.getAttribute('href')).toBe(
+      'https://youtube.com/@auradeaddictioncentre?si=fns1ebrmv29kcf6o'
+    );
+    expect(ytLink.getAttribute('target')).toBe('_blank');
+  });
 });
