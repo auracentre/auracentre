@@ -220,4 +220,21 @@ describe('Footer Component', () => {
     );
     expect(ytLink.getAttribute('target')).toBe('_blank');
   });
+
+  it('renders Design and Developed by Zero Limits credit link with redirect to https://www.zerolimits.co.in/', async () => {
+    contactService.getContactData.mockResolvedValueOnce({ branches: mockBranches });
+
+    await act(async () => {
+      render(<Footer />);
+    });
+
+    const creditLink = screen.getByRole('link', {
+      name: /design and developed by zero limits/i,
+    });
+    expect(creditLink.getAttribute('href')).toBe('https://www.zerolimits.co.in/');
+    expect(creditLink.getAttribute('target')).toBe('_blank');
+    expect(creditLink.getAttribute('rel')).toBe('noopener noreferrer');
+    expect(creditLink.textContent).toContain('Design and Developed by');
+    expect(creditLink.textContent).toContain('Zero Limits');
+  });
 });

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Phone, MapPin, X } from 'lucide-react';
+import { Phone, MapPin, X, ArrowUpRight } from 'lucide-react';
 import AuraLogo from '../common/AuraLogo';
 import contactService from '../../services/contactService';
 import { useMotionPreference } from '../../hooks/useMotionPreference';
@@ -347,14 +347,16 @@ export default function Footer() {
 
 
         {/* =========================================================
-            PART D: BOTTOM LEGAL BAR (Dynamic Year & Accessible Links)
+            PART D: BOTTOM LEGAL BAR (Dynamic Year, Links & Credits)
            ========================================================= */}
-        <div className="pt-4 sm:pt-5 border-t border-[#FAF9F4]/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-[#FAF9F4]/60">
-          <p className="text-center sm:text-left">
+        <div className="pt-4 sm:pt-5 border-t border-[#FAF9F4]/10 flex flex-col md:flex-row items-center justify-between gap-3.5 sm:gap-4 text-xs text-[#FAF9F4]/60">
+          {/* Left: Copyright */}
+          <p className="text-center md:text-left order-1">
             &copy; {CURRENT_YEAR} Aura De-Addiction Centre. All rights reserved.
           </p>
 
-          <div className="flex items-center gap-6">
+          {/* Center: Legal Modals */}
+          <div className="flex items-center gap-5 sm:gap-6 order-2">
             <button
               type="button"
               onClick={() => setLegalModal('privacy')}
@@ -372,6 +374,26 @@ export default function Footer() {
             >
               Terms and Conditions
             </button>
+          </div>
+
+          {/* Right End: Agency Credit */}
+          <div className="text-center md:text-right order-3">
+            <a
+              href="https://www.zerolimits.co.in/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-[#FAF9F4]/70 hover:text-[#A8C99C] transition-colors duration-200 group focus-visible:outline-none focus-visible:underline"
+              aria-label="Design and Developed by Zero Limits (opens in new tab)"
+            >
+              <span>Design and Developed by</span>
+              <span className="text-[#FAF9F4] group-hover:text-[#A8C99C] font-semibold underline underline-offset-2 decoration-[#FAF9F4]/30 group-hover:decoration-[#A8C99C] transition-colors">
+                Zero Limits
+              </span>
+              <ArrowUpRight
+                className="w-3.5 h-3.5 text-[#FAF9F4]/50 group-hover:text-[#A8C99C] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
+                aria-hidden="true"
+              />
+            </a>
           </div>
         </div>
       </div>
